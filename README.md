@@ -11,5 +11,5 @@ Process historic climate data from NOAA database
 * The file `climdiv-tmaxcy-v1.0.0-20230707.txt` contains the raw monthly maximum temperature data
 * The file `climdiv-pcpncy-v1.0.0-20230707.txt` contains the raw monthly precipitation data
 
-These data files were sourced from the [National Oceanic and Atmospheric Administration](https://www.ncei.noaa.gov/pub/data/cirs/climdiv/). The prior link leads to a directory of datasets as well as readme: `county-readme.txt`
+These data files were sourced from the [National Oceanic and Atmospheric Administration](https://www.ncei.noaa.gov/pub/data/cirs/climdiv/). The prior link leads to a directory of datasets as well as a readme file: `county-readme.txt`
 
