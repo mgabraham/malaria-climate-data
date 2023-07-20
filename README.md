@@ -7,6 +7,7 @@ Process historic climate data from NOAA database
 * Run `get-precipitation.R` to calculate the total amount of precipitation (inches) of the wettest quarter for each county for 2016 and 2017.
 
 ## Getting the raw data
+The following data files can be found in the `raw-data` folder:
 * The file `climdiv-tmpccy-v1.0.0-20230707.txt` contains the raw monthly average temperature data
 * The file `climdiv-tmaxcy-v1.0.0-20230707.txt` contains the raw monthly maximum temperature data
 * The file `climdiv-pcpncy-v1.0.0-20230707.txt` contains the raw monthly precipitation data
