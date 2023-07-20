@@ -9,7 +9,7 @@ library(r2r)
 # Load raw data file
 monthly_max_temp <- read.table(file = "raw-data/climdiv-tmaxcy-v1.0.0-20230707.txt", header = FALSE, colClasses = c(V1 = "character"))
 
-# Rearranging columns and filtering to data for past 10 years
+# Rearranging columns and filtering to data for 2016 and 2017
 monthly_max_temp %>% 
   transform(FIPS = substr(V1, 1, 5), Year = substr(V1, 8, 11)) %>% 
   select(-V1) %>% 
@@ -38,14 +38,9 @@ for (i in 1:fips_col_len) {
 Year = monthly_max_temp$Year
 FIPS = monthly_max_temp$FIPS
 monthly_max_temp <- monthly_max_temp %>% select(-c(FIPS,Year))
-# warmest_month_temp <- pmax(monthly_max_temp$Jan,monthly_max_temp$Feb,monthly_max_temp$Mar,monthly_max_temp$Apr,monthly_max_temp$May,monthly_max_temp$Jun,monthly_max_temp$Jul,monthly_max_temp$Aug,monthly_max_temp$Sep,monthly_max_temp$Oct,monthly_max_temp$Nov,monthly_max_temp$Dec)
 max_temp <- do.call(pmax,monthly_max_temp)
 warmest_month <- colnames(monthly_max_temp)[max.col(monthly_max_temp)]
-max_temp <- round(((max_temp - 32) / 1.8), digits = 1)
-
-
 warmest_month_data <- data.frame(FIPS, Year, warmest_month, max_temp)
-
 
 # Writing data to csv file
 write.csv(warmest_month_data, "processed-data/county-warmest-month.csv", row.names=FALSE)
