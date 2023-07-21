@@ -2,7 +2,7 @@
 Process historic climate data from NOAA database
 
 ## Running the code
-* Run `get-average-temp.R` to collect historic monthly average temperature data for each county for the past 10 years.
+* Run `get-average-temp.R` to collect historic monthly average temperature data for each county for years 1895 - 2023.
 * Run `get-warmest-month.R` to calculate the maximum temperature of the warmest month for each county for 2016 and 2017.
 * Run `get-precipitation.R` to calculate the total amount of precipitation (inches) of the wettest quarter for each county for 2016 and 2017.
 
