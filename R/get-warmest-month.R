@@ -34,6 +34,12 @@ for (i in 1:fips_col_len) {
   substr(monthly_max_temp$FIPS[i],1,2) <- NOAA_to_ANSI[[NOAA_state_code]]
 }
 
+# Add Lexington City, Virginia (FIPS 51678) values based on Rockbridge county (51163) values
+rockbridge_max_temp <- monthly_max_temp[monthly_max_temp$FIPS == "51163",]
+lexington_max_temp <- rockbridge_max_temp %>% 
+  mutate(FIPS = str_replace(FIPS,"51163","51678"))
+monthly_max_temp <- rbind(monthly_max_temp,lexington_max_temp)
+
 # Get warmest month of each year for each county and get max temperature of that month
 Year = monthly_max_temp$Year
 FIPS = monthly_max_temp$FIPS

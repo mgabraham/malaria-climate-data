@@ -34,6 +34,12 @@ for (i in 1:fips_col_len) {
   substr(monthly_precipitation$FIPS[i],1,2) <- NOAA_to_ANSI[[NOAA_state_code]]
 }
 
+# Add Lexington City, Virginia (FIPS 51678) values based on Rockbridge county (51163) values
+rockbridge_precip <- monthly_precipitation[monthly_precipitation$FIPS == "51163",]
+lexington_precip <- rockbridge_precip %>% 
+  mutate(FIPS = str_replace(FIPS,"51163","51678"))
+monthly_precipitation <- rbind(monthly_precipitation,lexington_precip)
+
 # Sum precipitation data of each quarter for each year
 Q1 <- rowSums(monthly_precipitation[ , c("Jan","Feb","Mar")])
 Q2 <- rowSums(monthly_precipitation[ , c("Apr","May","Jun")])
